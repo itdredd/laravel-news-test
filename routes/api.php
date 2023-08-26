@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +18,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/register', [RegisteredUserController::class, 'store'])
+Route::post('/register', [\App\Http\Controllers\Auth\RegisteredUserController::class, 'store'])
     ->middleware('guest')
     ->name('register');
 
@@ -31,9 +29,11 @@ Route::group([
 
 ], function ($router) {
 
-    Route::post('login', [AuthController::class, 'login']);
-    Route::post('logout', [AuthController::class, 'logout']);
-    Route::post('refresh', [AuthController::class, 'refresh']);
-    Route::post('me', [AuthController::class, 'me']);
+    Route::post('login', [\App\Http\Controllers\AuthController::class, 'login']);
+    Route::post('logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+    Route::post('refresh', [\App\Http\Controllers\AuthController::class, 'refresh']);
+    Route::post('me', [\App\Http\Controllers\AuthController::class, 'me']);
 
 });
+
+Route::post('/news', [\App\Http\Controllers\NewsController::class, 'create'])->middleware('auth');
