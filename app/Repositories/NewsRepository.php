@@ -28,13 +28,21 @@ class NewsRepository
         if ($model->canEdit()) {
             $model->update($data);
             return $model;
-        } else {
-            return false;
         }
+        
+        return false;
     }
 
-    public function delete()
+    public function delete(int $id): bool
     {
+        /** @var News $model */
+        $model = News::find($id);
 
+        if ($model->canEdit()) {
+            $model->delete();
+            return true;
+        }
+
+        return false;
     }
 }

@@ -29,8 +29,8 @@ class NewsService extends AbstractService
         return $this->newsRepository->update($id, $data);
     }
 
-    public function delete()
+    public function delete(int $id): bool
     {
-
+        return $this->newsRepository->delete($id);
     }
 }

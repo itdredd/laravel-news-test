@@ -30,8 +30,8 @@ class NewsController extends Controller
         return $this->newsService->update($news->id, $request->all());
     }
 
-    public function delete()
+    public function delete(News $news): bool
     {
-
+        return $this->newsService->delete($news->id);
     }
 }
