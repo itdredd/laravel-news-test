@@ -38,3 +38,6 @@ Route::group([
 
 Route::post('/news', [\App\Http\Controllers\NewsController::class, 'create'])->middleware('auth');
 Route::get('/news', [\App\Http\Controllers\NewsController::class, 'list']);
+Route::put('/news/{news}', [\App\Http\Controllers\NewsController::class, 'update'])
+    ->whereNumber('news')
+    ->middleware('auth');

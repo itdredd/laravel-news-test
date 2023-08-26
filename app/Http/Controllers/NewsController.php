@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\NewsRequest;
+use App\Models\News;
 use App\Services\NewsService;
-use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
@@ -25,9 +25,9 @@ class NewsController extends Controller
         return $this->newsService->list();
     }
 
-    public function update()
+    public function update(News $news, NewsRequest $request): bool|News
     {
-
+        return $this->newsService->update($news->id, $request->all());
     }
 
     public function delete()

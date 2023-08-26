@@ -24,9 +24,9 @@ class NewsService extends AbstractService
         return $this->newsRepository->getAll();
     }
 
-    public function update()
+    public function update(int $id, array $data = []): bool|\App\Models\News
     {
-
+        return $this->newsRepository->update($id, $data);
     }
 
     public function delete()

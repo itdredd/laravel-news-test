@@ -20,9 +20,17 @@ class NewsRepository
         return News::all();
     }
 
-    public function update()
+    public function update(int $id, array $data = []): bool|News
     {
+        /** @var News $model */
+        $model = News::find($id);
 
+        if ($model->canEdit()) {
+            $model->update($data);
+            return $model;
+        } else {
+            return false;
+        }
     }
 
     public function delete()
