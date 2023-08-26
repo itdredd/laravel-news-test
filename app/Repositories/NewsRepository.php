@@ -15,6 +15,11 @@ class NewsRepository
         ]);
     }
 
+    public function getAll(): \Illuminate\Database\Eloquent\Collection
+    {
+        return News::all();
+    }
+
     public function update()
     {
 

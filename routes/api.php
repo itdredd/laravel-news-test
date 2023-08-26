@@ -37,3 +37,4 @@ Route::group([
 });
 
 Route::post('/news', [\App\Http\Controllers\NewsController::class, 'create'])->middleware('auth');
+Route::get('/news', [\App\Http\Controllers\NewsController::class, 'list']);

@@ -20,18 +20,18 @@ class NewsController extends Controller
         $this->newsService->create($request->input('title'), $request->input('description'));
     }
 
-    public function list()
+    public function list(): \Illuminate\Database\Eloquent\Collection
     {
-
+        return $this->newsService->list();
     }
 
     public function update()
     {
-        
+
     }
 
     public function delete()
     {
-        
+
     }
 }

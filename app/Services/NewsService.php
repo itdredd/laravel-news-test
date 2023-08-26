@@ -19,9 +19,9 @@ class NewsService extends AbstractService
         $this->newsRepository->create($title, $description, $userId);
     }
 
-    public function list()
+    public function list(): \Illuminate\Database\Eloquent\Collection
     {
-
+        return $this->newsRepository->getAll();
     }
 
     public function update()
